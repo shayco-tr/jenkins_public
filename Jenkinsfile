@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
         string(name: 'DockerFile', defaultValue: 'DockerFiletemp')
-
+    }
     stages {
         stage('Test') {
             steps {
@@ -21,4 +21,3 @@ pipeline {
             }
         }
     }
-}
