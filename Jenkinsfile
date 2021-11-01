@@ -2,19 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                script {   
+                sh python tests.py   
+            }
+        }
+        stage('Build') {
+            steps {
+                 script { 
+                env.DockerFile = DockerFiletemp
+                sh docker build -t alison . -f Dockerfiletemp
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo ${DockerFile}
             }
         }
     }
