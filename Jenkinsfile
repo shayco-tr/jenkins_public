@@ -5,14 +5,14 @@ pipeline {
         stage('Test') {
             steps {
                 script {   
-                sh python tests.py   
+                sh python 'tests.py'  
             }
         }
         stage('Build') {
             steps {
                  script { 
-                env.DockerFile = DockerFiletemp
-                sh sudo docker build -t alison . Dockerfiletemp
+                    DockerFile = 'DockerFiletemp'
+                sh sudo 'docker build -t alison . Dockerfiletemp'
             }
         }
         stage('Deploy') {
