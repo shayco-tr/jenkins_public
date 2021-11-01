@@ -12,7 +12,7 @@ pipeline {
             steps {
                  script { 
                 env.DockerFile = DockerFiletemp
-                sh docker build -t alison . -f Dockerfiletemp
+                sh sudo docker build -t alison . -f Dockerfiletemp
             }
         }
         stage('Deploy') {
