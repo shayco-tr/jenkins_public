@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                 echo "${params.DockerFile}"
+                 echo 'Deploying....'
             }
         }
     }
