@@ -5,13 +5,18 @@ pipeline {
     }
     stages {
         stage('Test') {
-            steps {   
-                sh 'python tests.py'   
+            steps {
+               sh ''' echo \'installing libs\'
+                pip3 install .
+                echo \'running tests\'
+                python3 tests.py ''' 
             }
         }
         stage('Build') {
             steps {
-                sh 'sudo docker build -t alison . -f Dockerfiletemp'
+                sh """ echo 'building docker image'
+                echo ${params.Dockerfile}
+                sudo docker build -t alison . -f ${params.Dockerfile} """
             }
         }
         stage('Deploy') {
