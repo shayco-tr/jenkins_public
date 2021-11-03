@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'env', defaultValue: 'stageing', description: 'Environment')
+        string(name: 'env', defaultValue: 'staging', description: 'Environment')
     }
     environment{
         ARM_USE_MSI=true
